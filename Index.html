@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Valentine?</title>
+    <style>
+        body { height: 100vh; display: flex; justify-content: center; align-items: center; background: #ffe6eb; font-family: Arial, sans-serif; overflow: hidden; margin: 0; touch-action: manipulation; }
+        .box { text-align: center; padding: 20px; }
+        h1 { color: #e6005c; font-size: 1.8rem; }
+        button { padding: 15px 25px; font-size: 1.2rem; margin: 10px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        #yes { background-color: #ff4d79; color: white; position: relative; z-index: 10; }
+        #no { background-color: #999; color: white; position: absolute; transition: 0.1s; }
+        #gif { display: none; margin-top: 20px; }
+        img { width: 100%; max-width: 250px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div id="content">
+            <h1>Will you be my Valentine? ❤️</h1>
+            <button id="yes">Yes</button>
+            <button id="no">No</button>
+        </div>
+        <div id="gif">
+            <h2>You had no choice 😂💖</h2>
+            <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Funny Gif">
+        </div>
+    </div>
+    <script>
+        const noButton = document.getElementById("no");
+        const yesButton = document.getElementById("yes");
+        const gifDiv = document.getElementById("gif");
+        const content = document.getElementById("content");
+
+        const moveButton = (e) => {
+            if (e) e.preventDefault();
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.left = x + "px";
+            noButton.style.top = y + "px";
+        };
+
+        noButton.addEventListener("mouseover", moveButton);
+        noButton.addEventListener("touchstart", moveButton);
+
+        yesButton.addEventListener("click", () => {
+            content.style.display = "none";
+            gifDiv.style.display = "block";
+            document.body.style.backgroundColor = "#ffccd5";
+        });
+    </script>
+</body>
+</html>
